@@ -1,0 +1,107 @@
+.aLogo {
+	height: 10vh; max-height: 10vh !important; margin-top: 20px;
+}
+
+.buttonBook {
+	background-color: #c7a17a;
+	border: none;
+}
+
+.buttonBook:hover {
+	background-color: #977552;
+}
+
+#bgSite {
+	margin-top: 1px;
+}
+
+.tittleComingSoon {
+	font-family: Oswald;
+	font-size: 7em;
+	line-height: 100px;
+	font-weight: 600;
+	letter-spacing: 2px;
+	text-transform: Uppercase;
+	color: #ffffff
+}
+
+.countDownDist {
+	color: #FFF;
+	font-family: Oswald;
+	font-weight: 600;
+	font-size: 5em;
+}
+
+.countDownDist div {
+	margin-top: 1.2rem;
+	text-align: center;
+}
+
+.countDownDist span {
+	font-size: 0.4em;
+}
+
+@media only screen and (max-height:750px) {
+	#bgSite {
+		padding-top: 20vw;
+	}
+}
+
+@media only screen and (max-width:600px) {
+		.tittleComingSoon {
+		font-size: 5em;
+		line-height: 70px;
+	}
+	.countDownDist {
+		font-size: 3em;
+	}
+	.countDownDist span {
+		font-size: 0.35em;
+	}
+}
+.page-id-7343 .edgtf-content .edgtf-content-inner>.edgtf-container:not(.edgtf-container-bottom-navigation)>.edgtf-container-inner,
+.page-id-7343 .edgtf-content .edgtf-content-inner>.edgtf-full-width>.edgtf-full-width-inner {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.page-id-7343 .edgtf-content .edgtf-content-inner>.edgtf-container .edgtf-overlapping-content {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+
+.edgtf-vertical-align-containers .edgtf-position-center:before,
+.edgtf-vertical-align-containers .edgtf-position-left:before,
+.edgtf-vertical-align-containers .edgtf-position-right:before {
+	margin-right: 0;
+}
+
+body:not(.page-id-12314) .edgtf-smooth-transition-loader {
+	display: none !important;
+}
+
+body.page-id-12314 .edgtf-image-with-text {
+	opacity: 0;
+	transition: all 0.35s ease-in-out;
+	-webkit-transform: translate3d(0, 40px, 0);
+	transform: translate3d(0, 40px, 0);
+}
+
+body.page-id-12314 .edgtf-image-with-text.edgtf-appeared {
+	opacity: 1;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+body.page-id-12314 .edgtf-image-with-text:hover .edgtf-image-with-text-text {
+	color: #000;
+}
+
+@media only screen and (max-width:600px) {
+	.page-id-3991 .edgtf-custom-font-holder>span:nth-of-type(2) {
+		display: block !important;
+	}
+}
+
+		
