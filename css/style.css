@@ -78,7 +78,7 @@
 }
 
 body:not(.page-id-12314) .edgtf-smooth-transition-loader {
-	display: none !important;
+	display: none;
 }
 
 body.page-id-12314 .edgtf-image-with-text {
