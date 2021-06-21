@@ -1,50 +1,60 @@
 $("#goBook").click(async () => {
-  const namebook = $("#name").val()
-  const peoplebook = $("#people").val()
-  const datebook = $("#datapicker").val()
-  const atbook = $("#attime").val()
+  const namebook = $("#name").val();
+  const peoplebook = $("#people").val();
+  const datebook = $("#datapicker").val();
+  const atbook = $("#attime").val();
+
+  const dateChoice1 = datebook.split('/');
+  const dateChoice = dateChoice1[2] + dateChoice1[1] + dateChoice1[0];
 
   if(namebook && peoplebook && datebook && atbook){
-    
-    $(".edgtf-smooth-transition-loader").show();
 
-    const options = {
-      "name": namebook,
-      "people": peoplebook,
-      "forbook": datebook,
-      "atbook": atbook
-    };
-    
-    await fetch('http://localhost:2021/book-table-search', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(options)
-    }).then(async (response) => {
-      const result = await response.json();
+    if(dateChoice < 20210720){
 
-      if(result.length === 0){
-        //START ADD DATE
+      alert('The Porat Wine and Dine open in 20/07/2021. Please, choose date over at 20/07/2021. Thanks!');
+  
+    } else {
+  
+      $(".edgtf-smooth-transition-loader").show();
 
-        await fetch('http://localhost:2021/book-table', {
-          method: 'post',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(options)
-        }).then(async (response) => {
-          const resultFinal = await response.json();
+      const options = {
+        "name": namebook,
+        "people": peoplebook,
+        "forbook": datebook,
+        "atbook": atbook
+      };
+      
+      await fetch('http://ec2-35-176-26-144.eu-west-2.compute.amazonaws.com:2021/book-table-search', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(options)
+      }).then(async (response) => {
+        const result = await response.json();
+
+        if(result.length === 0){
+          //START ADD DATE
+
+          await fetch('http://ec2-35-176-26-144.eu-west-2.compute.amazonaws.com:2021/book-table', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(options)
+          }).then(async (response) => {
+            const resultFinal = await response.json();
+            $(".edgtf-smooth-transition-loader").hide();
+            if(resultFinal.confirm === 1){
+              alert("Hey! Thanks for choosing us! Your reservation is confirmed and is valid until 15 minutes after the chosen time.")
+            } else {
+              alert("Ops! Something is wrong. Please, try again!")
+            }
+          });
+
+          //END ADD DATE
+        } else {
           $(".edgtf-smooth-transition-loader").hide();
-          if(resultFinal.confirm === 1){
-            alert("Hey! Thanks for choosing us! Your reservation is confirmed and is valid until 15 minutes after the chosen time.")
-          } else {
-            alert("Ops! Something is wrong. Please, try again!")
-          }
-        });
-
-        //END ADD DATE
-      } else {
-        $(".edgtf-smooth-transition-loader").hide();
-        alert('The date or time you are booking already has a reservation. Choice another date or time.');
-      }
-    });
+          alert('The date or time you are booking already has a reservation. Choice another date or time.');
+        }
+      });
+    }
   } else {
     alert("All fields must be completed!")
   }
